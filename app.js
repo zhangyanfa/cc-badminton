@@ -22,12 +22,7 @@ appClient.setKeepAliveInterval(20);
 appClient.setCleanSession(true);
 appClient.connect(2);// qos : 0,1,2
 
-app.use(express.static(__dirname + '/public'));
-var appEnv = cfenv.getAppEnv();
-var port = process.env.HOST_PORT || process.env.VCAP_APP_PORT || 3000;
-http.listen(port, function () {
-	console.log("server starting on " + appEnv.url);
-});
+
 
 var username = process.env.CLOUDANT_USERNAME || '1df04d79-dac2-4c2f-8cba-ab1ae6606098-bluemix';
 var password = process.env.CLOUDANT_PASSWORD || '46f9ac7180f36a1f752786421858d01b5dbd92bb42c89f84e7464016a0792e55';
@@ -188,6 +183,13 @@ function queryFromDb() {
 		io.emit('playlist', JSON.stringify(result.docs));
 	});
 }
+
+
+app.use(express.static(__dirname + '/public'));
+var port = process.env.HTTP_PORT || process.env.VCAP_APP_PORT || 3000;
+http.listen(port, function () {
+	console.log('Server running on port: %d', port);
+});
 
 var schedule = require('node-schedule');
 function scheduleCronstyle() {

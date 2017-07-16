@@ -2,5 +2,5 @@ applications:
 - path: .
   memory: 256M
   instances: 1
-  name: badminton-analytics
+  name: cc-badminton
   command: npm start
