@@ -184,7 +184,6 @@ function queryFromDb() {
 	});
 }
 
-
 app.use(express.static(__dirname + '/public'));
 var port = process.env.HTTP_PORT || process.env.VCAP_APP_PORT || 3000;
 http.listen(port, function () {
