@@ -13,7 +13,7 @@
     "license": "Apache-2.0",
     "dependencies": {
         "cfenv": "1.0.0",
-        "cloudant": "^1.5.0",
+        "cloudant": "~1.7.0",
         "express": "4.13.x",
         "ibmiotf": "^0.2.18",
         "is-utf8": "^0.2.1",
