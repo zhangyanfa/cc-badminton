@@ -5,7 +5,7 @@ ENV HTTP_PORT 4000
 COPY . /app  
 WORKDIR /app
 
-RUN npm install
+RUN npm install --registry http://registry.cnpmjs.org
 
 EXPOSE 4000
 
