@@ -1,4 +1,4 @@
-FROM node:6.11.1
+FROM node:4.8.4-wheezy
 
 ENV HTTP_PORT 4000
 
