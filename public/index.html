@@ -82,10 +82,10 @@
 	<script src="js/socket.io.js"></script>
 	<script>
 		//var socket = io('ws://localhost:6001');
-
+		console.log(window.document.location.href);
 		var maxSpeed = 0;
 		var maxShotPower = 0;
-		var socket = io.connect();
+		var socket = io.connect(window.document.location.href);
 		socket.on('message', function (obj) {
 			//alert("message : " + obj);
 			//track(JSON.parse(obj))
