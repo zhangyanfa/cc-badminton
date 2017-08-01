@@ -49,17 +49,19 @@ function useDB() {
 
 		var dbs = allDbs.join(",");
 		if (dbs.indexOf(badmintondbname) < 0) {
-			badmintondb = cloudant.db.create(badmintondbname);
+			cloudant.db.create(badmintondbname,function () {
+				badmintondb = cloudant.db.use(badmintondbname)
+				var first_name = { name: 'time-index', type: 'json', index: { fields: [{'time':'desc'}] } }
+				badmintondb.index(first_name, function (er, response) {
+					if (er) {
+						throw er;
+					}
+					console.log('Index creation result: %s', response.result);
+				});
+			});
 			//statusdb = cloudant.db.create(statusdbname);
 			//devicestatusdb = cloudant.db.create(devicestatusdbname);
-			badmintondb = cloudant.db.use(badmintondbname)
-			var first_name = { name: 'time-index', type: 'json', index: { fields: [{'time':'desc'}] } }
-			badmintondb.index(first_name, function (er, response) {
-				if (er) {
-					throw er;
-				}
-				console.log('Index creation result: %s', response.result);
-			});
+			
 		} else {
 			badmintondb = cloudant.db.use(badmintondbname)
 			//statusdb = cloudant.db.use(statusdbname);
