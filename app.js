@@ -52,35 +52,20 @@ function useDB() {
 			badmintondb = cloudant.db.create(badmintondbname);
 			//statusdb = cloudant.db.create(statusdbname);
 			//devicestatusdb = cloudant.db.create(devicestatusdbname);
+			badmintondb = cloudant.db.use(badmintondbname)
+			var first_name = { name: 'time-index', type: 'json', index: { fields: [{'time':'desc'}] } }
+			badmintondb.index(first_name, function (er, response) {
+				if (er) {
+					throw er;
+				}
+				console.log('Index creation result: %s', response.result);
+			});
 		} else {
 			badmintondb = cloudant.db.use(badmintondbname)
 			//statusdb = cloudant.db.use(statusdbname);
 			//devicestatusdb = cloudant.db.use(devicestatusdbname);
 		}
 
-		badmintondb.index(function (er, result) {
-			if (er) {
-				throw er;
-			}
-
-			console.log('The database has %d indexes', result.indexes.length);
-			for (var i = 0; i < result.indexes.length; i++) {
-				var idxName = JSON.stringify(result.indexes[i].def);
-				console.log('  %s (%s): %j', result.indexes[i].name, result.indexes[i].type, result.indexes[i].def);
-
-				if (idxName.indexOf("time") < 0) {
-					var first_name = { name: 'time-index', type: 'json', index: { fields: [{'time':'desc'}] } }
-					badmintondb.index(first_name, function (er, response) {
-						if (er) {
-							throw er;
-						}
-						console.log('Index creation result: %s', response.result);
-					});
-				}
-			}
-
-
-		});
 	});
 }
 

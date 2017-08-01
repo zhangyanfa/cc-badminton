@@ -1,24 +1,24 @@
 {
-    "name": "cc-badminton",
-    "version": "1.0.0",
-    "description": "IoT Badmintion demo",
-    "main": "app.js",
-    "scripts": {
-        "start": "node app.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/zhangyanfa/cc-badminton.git"
-    },
-    "license": "Apache-2.0",
-    "dependencies": {
-        "cfenv": "1.0.0",
-        "cloudant": "~1.7.0",
-        "express": "4.13.x",
-        "ibmiotf": "^0.2.18",
-        "is-utf8": "^0.2.1",
-        "node-schedule": "^1.2.1",
-        "request": "^2.75.0",
-        "socket.io": "^1.7.3"
-    }
+  "name": "cc-badminton",
+  "version": "1.0.0",
+  "description": "IoT Badmintion demo",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhangyanfa/cc-badminton.git"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "cfenv": "1.0.0",
+    "cloudant": "^1.8.0",
+    "express": "4.13.x",
+    "ibmiotf": "^0.2.18",
+    "is-utf8": "^0.2.1",
+    "node-schedule": "^1.2.1",
+    "request": "^2.75.0",
+    "socket.io": "^1.7.3"
+  }
 }
