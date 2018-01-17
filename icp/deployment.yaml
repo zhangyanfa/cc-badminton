@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: badminton-jenkins
+  labels:
+    app: badminton
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: badminton-jenkins
+        release: icc-demo.badminton-jenkins
+    spec:
+      containers:
+        - name: badminton
+          image: "zhangyanfa/badminton"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 4000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 4000
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 4000
